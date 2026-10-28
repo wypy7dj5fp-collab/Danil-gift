@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#18382f">
+<title>Для Данила ♡</title>
+<style>
+:root {
+  --forest:#18382f;
+  --deep:#102820;
+  --sage:#879782;
+  --cream:#f1ebdd;
+  --paper:#faf7ef;
+  --gold:#c7b58a;
+  --ink:#28372e;
+  --muted:#858778;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif;
+  line-height:1.8;
+}
+button { font:inherit; cursor:pointer; }
+.hero {
+  min-height:88vh;
+  padding:28px 22px 55px;
+  background:
+    radial-gradient(ellipse at 50% 25%,#355748 0%,transparent 65%),
+    var(--forest);
+  color:var(--cream);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero:before,.hero:after {
+  content:"";
+  position:absolute;
+  width:240px;height:240px;
+  border:1px solid #c7b58a24;
+  border-radius:50%;
+}
+.hero:before { top:-130px;left:-100px; }
+.hero:after { bottom:-150px;right:-90px;width:320px;height:320px; }
+.eyebrow {
+  font:10px/1.5 Arial,sans-serif;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.hero h1 {
+  font-size:clamp(38px,9vw,68px);
+  font-weight:normal;
+  line-height:1.2;
+  margin:28px 0 18px;
+}
+.hero .subtitle {
+  max-width:360px;
+  color:#d4d6c9;
+  font-size:16px;
+  font-style:italic;
+}
+.ornament { color:var(--gold);font-size:24px;margin:20px; }
+.primary {
+  display:inline-block;
+  margin-top:24px;
+  padding:13px 25px;
+  border:1px solid var(--gold);
+  background:var(--gold);
+  color:var(--deep);
+  text-decoration:none;
+  font-size:14px;
+  transition:.25s;
+}
+.primary:hover { background:var(--cream); }
+nav {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:6px;
+  padding:14px 10px;
+  background:var(--deep);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+nav button {
+  border:0;
+  background:transparent;
+  color:#d9d8cb;
+  padding:9px 13px;
+  font:11px Arial,sans-serif;
+  letter-spacing:.5px;
+}
+nav button.active,nav button:hover { color:var(--gold); }
+main { max-width:760px;margin:auto;padding:0 20px 65px; }
+section { padding-top:58px;scroll-margin-top:60px; }
+.section-label {
+  color:#8a8a70;
+  font:10px Arial,sans-serif;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+h2 {
+  font-size:clamp(28px,6vw,39px);
+  line-height:1.3;
+  font-weight:normal;
+  margin:12px 0;
+  color:var(--forest);
+}
+.intro { color:#747568;font-size:14px; }
+.paper {
+  background:var(--paper);
+  padding:clamp(22px,5vw,42px);
+  border:1px solid #ded8c8;
+  box-shadow:0 8px 30px #24372b08;
+}
+.letter-text { white-space:pre-line;font-size:16px; }
+.signature {
+  margin-top:28px;
+  padding-top:20px;
+  border-top:1px solid #ded8c8;
+  text-align:center;
+  color:#777b66;
+  font-style:italic;
+}
+.reasons {
+  list-style:none;
+  counter-reset:reason;
+  padding:0;
+  margin:28px 0 0;
+}
+.reasons li {
+  counter-increment:reason;
+  display:grid;
+  grid-template-columns:36px 1fr;
+  gap:10px;
+  padding:15px 0;
+  border-bottom:1px solid #d8d5c8;
+  font-size:15px;
+}
+.reasons li:before {
+  content:counter(reason,decimal-leading-zero);
+  color:#7c886e;
+  font-size:12px;
+  padding-top:4px;
+}
+.letters-list { margin-top:25px;border-top:1px solid #d8d5c8; }
+.letter-item { border-bottom:1px solid #d8d5c8; }
+.letter-toggle {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  width:100%;
+  padding:19px 3px;
+  text-align:left;
+  background:transparent;
+  border:0;
+  color:var(--ink);
+}
+.letter-number { color:#8b8b73;font-size:12px; }
+.letter-title { flex:1;font-size:15px; }
+.plus { color:#8b8b73;font-size:20px;transition:transform .2s; }
+.letter-item.open .plus { transform:rotate(45deg); }
+.letter-content {
+  display:none;
+  background:var(--paper);
+  border-left:2px solid var(--sage);
+  padding:22px;
+  margin:0 0 18px 25px;
+  white-space:pre-line;
+  font-size:15px;
+  animation:appear .25s ease;
+}
+.letter-item.open .letter-content { display:block; }
+@keyframes appear {
+  from { opacity:0;transform:translateY(-5px); }
+  to { opacity:1;transform:translateY(0); }
+}
+footer {
+  background:var(--forest);
+  color:#d9d8cb;
+  padding:40px 20px;
+  text-align:center;
+}
+footer .heart { color:var(--gold);font-size:23px; }
+footer p { font-size:13px;color:#c3c7b8; }
+.backtop {
+  display:block;
+  margin:35px auto 0;
+  background:none;
+  border:1px solid #d8d5c8;
+  color:var(--forest);
+  padding:10px 18px;
+  font-size:12px;
+}
+@media(max-width:420px) {
+  nav { gap:0;padding:9px 3px; }
+  nav button { padding:10px 8px;font-size:10px; }
+  .hero { min-height:82vh; }
+  .letter-content { margin-left:10px;padding:18px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*:before,*:after { scroll-behavior:auto!important;animation:none!important; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="home">
+  <div class="eyebrow">A personal gift · Made with love</div>
+  <div class="ornament">✳</div>
+  <h1>Данил,<br>это для тебя.</h1>
+  <p class="subtitle">
+    Некоторые люди приходят в жизнь<br>
+    как ответ на молитву.
+  </p>
+  <div class="ornament">— ♡ —</div>
+  <a class="primary" href="#letter">Открыть мой подарок</a>
+</header>
+
+<nav aria-label="Разделы сайта">
+  <button class="active" data-target="letter">Письмо</button>
+  <button data-target="reasons">25 причин</button>
+  <button data-target="when">Открой, когда…</button>
+</nav>
+
+<main>
+  <section id="letter">
+    <div class="section-label">01 · От всего сердца</div>
+    <h2>Мой дорогой Данил</h2>
+    <p class="intro">Несколько слов, которые я хочу, чтобы ты сохранил.</p>
+    <article class="paper">
+      <div class="letter-text">Мой дорогой Данил🥹❤️
+
+Сегодня твой день и я очень рада, что 25 лет назад родился ты🥹❤️
+
+Буквально несколько часов назад я сказала: Господи, спасибо за Даника🥰
+
+И так я говорю уже на протяжении 3 месяцев)
+
+Казалось бы, какой маленький срок, но за такой короткий промежуток времени ты стал для меня очень дорогим человеком🤍 Я могу доверить тебе буквально все, и не пожалеть, что так сделала. Знай, что я этим очень дорожу и верю, что так будет и дальше.
+
+Мне очень нравится, какой ты) Мне нравится, как ты относишься к другим людям, как ты любишь детей, как общаешься и заботишься о своих родных. Мне очень нравится, как ты поддерживаешь меня во время, всегда интересуешься моим состоянием, настроением, всегда стараешься его поднять. Всегда беспокоишься обо мне 🥹🥰 Спасибо тебе за все это🥰🥰🥰
+
+Я очень рада и благодарна Богу, что ты у меня есть🥹❤️ Спасибо тебе за все, что ты делаешь для нас, спасибо за все твои советы, добрые слова, комплименты, поддержку. За все❤️ Я многому учусь у тебя и очень рада, что ты такой мудрый😘 У тебя есть много талантов, развивай их. Трудись для Бога, живи для Него и Он не оставит тебя. А я всегда поддержу тебя, выслушаю и помогу❤️ Я всегда буду рядом🤍 Молюсь о тебе🥰
+
+Я очень сильно люблю тебя, скучаю и жду 19 декабря❤️❤️❤️</div>
+      <div class="signature">С любовью и благодарностью Богу 🤍</div>
+    </article>
+  </section>
+
+  <section id="reasons">
+    <div class="section-label">02 · Моя благодарность Богу</div>
+    <h2>25 причин, за что я благодарна Богу за тебя</h2>
+    <p class="intro">Каждая из них — от сердца.</p>
+    <ol class="reasons">
+      <li>За то, что мы встретились.</li>
+      <li>За то, что ты всегда поддерживаешь меня.</li>
+      <li>За то, что ты молишься обо мне.</li>
+      <li>За то, что ты говоришь мне комплименты.</li>
+      <li>За то, что ты говоришь мне, как ты меня любишь.</li>
+      <li>За то, что даёшь мне мудрые советы.</li>
+      <li>За то, что ты беспокоишься о моём внутреннем состоянии.</li>
+      <li>За то, что ты беспокоишься о моём моральном состоянии.</li>
+      <li>За то, что ты интересуешься моим настроением.</li>
+      <li>За то, что с тобой я чувствую себя любимой.</li>
+      <li>За то, что ты умеешь меня выслушать.</li>
+      <li>За то, что ты умеешь поднять мне настроение.</li>
+      <li>За то, что тебе небезразлично то, что я чувствую.</li>
+      <li>За то, что мне есть чему учиться у тебя.</li>
+      <li>За то, что ты любишь Бога.</li>
+      <li>За то, что ты очень добрый.</li>
+      <li>За то, что с тобой я могу быть собой.</li>
+      <li>За то, что ты стараешься ради наших отношений.</li>
+      <li>За то, что ты стал таким дорогим человеком для меня.</li>
+      <li>За то, что я могу доверять тебе.</li>
+      <li>За то, что даже через экран ты умеешь сделать так, чтобы я улыбалась.</li>
+      <li>За то, что расстояние не мешает нам становиться ближе.</li>
+      <li>За то, что мы можем говорить с тобой на любые темы.</li>
+      <li>За то, что ты мудрый.</li>
+      <li>За то, что ты такой, какой ты есть. ❤️</li>
+    </ol>
+  </section>
+
+  <section id="when">
+    <div class="section-label">03 · Я рядом, даже на расстоянии</div>
+    <h2>Открой, когда…</h2>
+    <p class="intro">Выбери момент — и прочитай мои слова для тебя.</p>
+
+    <div class="letters-list">
+      <article class="letter-item">
+        <button class="letter-toggle" aria-expanded="false">
+          <span class="letter-number">01</span>
+          <span class="letter-title">Открой, когда скучаешь по мне🥹</span>
+          <span class="plus">+</span>
+        </button>
+        <div class="letter-content">Данил, если ты открыл это письмо, значит сейчас ты очень скучаешь по мне🥰 Знай, что это взаимно, но очень скоро мы будем с тобой вместе🥰 Поэтому, помни, что я очень люблю тебя, жду нашего разговора и тоже скучаю❤️</div>
+      </article>
+
+      <article class="letter-item">
+        <button class="letter-toggle" aria-expanded="false">
+          <span class="letter-number">02</span>
+          <span class="letter-title">Открой, когда грустно</span>
+          <span class="plus">+</span>
+        </button>
+        <div class="letter-content">Данил, тебе не нужно всегда быть сильным. Можно и нужно быть всегда собой. Но помни, что когда грустно тебе, то грустно и мне, поэтому, я бы очень не хотела, чтобы ты расстраивался. Очень люблю тебя и верю, что все будет хорошо ❤️  Я молюсь о тебе🙏🏽🥰</div>
+      </article>
+
+      <article class="letter-item">
+        <button class="letter-toggle" aria-expanded="false">
+          <span class="letter-number">03</span>
+          <span class="letter-title">Открой, когда хочешь улыбнуться</span>
+          <span class="plus">+</span>
+        </button>
+        <div class="letter-content">Срочное напоминание: одна прекрасная девушка очень сильно тебя любит. А еще она очень милая, когда серьезная, но при этом Даник хочет, чтобы она улыбалась😄☺️ Поэтому, она всегда не знает, что выбрать: быть милой, или просто улыбаться😅❤️</div>
+      </article>
+
+      <article class="letter-item">
+        <button class="letter-toggle" aria-expanded="false">
+          <span class="letter-number">04</span>
+          <span class="letter-title">Открой, когда захочешь узнать, о чем я молюсь за тебя</span>
+          <span class="plus">+</span>
+        </button>
+        <div class="letter-content">Я всегда благодарю Бога за то, что он послал в мою жизнь тебя. Всегда я прошу, чтобы он дал мудрости тебе во всем, помог в решении всех вопросов, проблем, которые есть. Молюсь о твоей духовном состоянии. Молюсь, чтобы у тебя все было хорошо ❤️
+
+Просто молюсь о тебе, потому что ты мне очень дорог🤍</div>
+      </article>
+
+      <article class="letter-item">
+        <button class="letter-toggle" aria-expanded="false">
+          <span class="letter-number">05</span>
+          <span class="letter-title">Открой, когда у тебя тяжелый день</span>
+          <span class="plus">+</span>
+        </button>
+        <div class="letter-content">Данил, в первую очередь хочу сказать, что я тебя люблю. Я верю в тебя, верю, что все будет хорошо. Я очень ценю все, что ты делаешь для нас, спасибо тебе за все🥰 Я молюсь о тебе 🤍</div>
+      </article>
+
+      <article class="letter-item">
+        <button class="letter-toggle" aria-expanded="false">
+          <span class="letter-number">06</span>
+          <span class="letter-title">Открой в день нашей встречи</span>
+          <span class="plus">+</span>
+        </button>
+        <div class="letter-content">Данил, я пишу это письмо и не знаю, какой сегодня день, в какое время мы встретились и как это было🙈 Мне даже трудно это представить, но я думаю, что все прошло не так, как мы себе это представляли. Мне интересно, что ты ощутил, когда увидел меня, что подумал… И как это все было) Я искренне верю, что все хорошо, надеюсь, что так и есть.  Спасибо за все, что ты сделал, чтобы быть сейчас здесь. Я думаю, что время до свадьбы пройдет очень быстро, нам нужно правильно его использовать и правильно вести себя🤍 Я думаю, Бог даст мудрости и поможет нам во всем. Я тебя люблю❤️</div>
+      </article>
+    </div>
+  </section>
+
+  <button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    ↑ Вернуться в начало
+  </button>
+</main>
+
+<footer>
+  <div class="heart">♡</div>
+  <div class="eyebrow">For Danil, with love</div>
+  <p>Спасибо Богу за тебя.<br>Я очень тебя люблю. 🤍</p>
+</footer>
+
+<script>
+document.querySelectorAll('.letter-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.letter-item');
+    const isOpen = item.classList.contains('open');
+
+    item.classList.toggle('open', !isOpen);
+    button.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+
+const navButtons = document.querySelectorAll('nav button');
+navButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    document.getElementById(button.dataset.target)
+      .scrollIntoView({behavior:'smooth'});
+    navButtons.forEach(b => b.classList.toggle('active', b === button));
+  });
+});
+
+const sections = document.querySelectorAll('main section');
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navButtons.forEach(button => {
+          button.classList.toggle(
+            'active',
+            button.dataset.target === entry.target.id
+          );
+        });
+      }
+    });
+  }, {rootMargin:'-20% 0px -65% 0px'});
+  sections.forEach(section => observer.observe(section));
+}
+</script>
+</body>
+</html>
