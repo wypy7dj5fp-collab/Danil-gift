@@ -3,300 +3,266 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#102b22">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173b2d">
 <title>Для моего Даника ♡</title>
 
 <style>
 :root{
   --green:#173b2d;
-  --deep:#0b241c;
-  --green2:#244d3a;
-  --cream:#f5efdf;
-  --paper:#fffaf0;
-  --gold:#c5a365;
-  --gold2:#e4d0a0;
-  --ink:#273c2e;
-  --muted:#8c826d;
-  --line:#e2d4b7;
+  --deep:#10291f;
+  --green-light:#315541;
+  --cream:#f7f2e7;
+  --paper:#fffdf7;
+  --gold:#b99a5c;
+  --gold-light:#ddc998;
+  --ink:#293b30;
+  --muted:#8b8576;
+  --line:#e6dcc7;
 }
 *{box-sizing:border-box}
-html{min-height:100%;background:var(--deep)}
+html{background:var(--cream);scroll-behavior:smooth}
 body{
-  margin:0;min-height:100vh;min-height:100svh;
-  background:var(--cream);color:var(--ink);
+  margin:0;
+  min-height:100vh;
+  background:var(--cream);
+  color:var(--ink);
   font-family:Georgia,"Times New Roman",serif;
   line-height:1.8;
 }
 button{font:inherit;-webkit-tap-highlight-color:transparent}
-button:focus-visible,a:focus-visible{
-  outline:2px solid var(--gold);outline-offset:4px
-}
-button:disabled{opacity:.4;cursor:default}
+button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+button,[data-open]{touch-action:manipulation}
 [hidden]{display:none!important}
-button{color:inherit}
-::selection{background:var(--gold2);color:var(--deep)}
+::selection{background:var(--gold-light);color:var(--deep)}
 
 .progress{
   position:fixed;z-index:100;top:0;left:0;right:0;height:3px;
-  background:#c5a36530
+  background:#b99a5c30
 }
 .progress-fill{
   width:0;height:100%;background:var(--gold);
-  transition:width .5s ease
+  transition:width .45s ease
 }
-
 .topbar{
   position:sticky;z-index:50;top:3px;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:10px;padding:10px 15px;
-  background:#102b22f5;color:var(--cream);
-  border-bottom:1px solid #c5a36555;
-  backdrop-filter:blur(12px)
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:10px 15px;background:#173b2df7;color:var(--cream);
+  border-bottom:1px solid #b99a5c70;backdrop-filter:blur(10px)
 }
-.brand{font-size:13px;color:var(--gold2);letter-spacing:.4px}
-.top-actions{display:flex;gap:8px;align-items:center}
+.brand{font-size:12px;color:var(--gold-light)}
+.top-actions{display:flex;align-items:center;gap:10px}
+.page-count{font:10px Arial,sans-serif;color:#e0d6c1}
 .small-btn{
-  border:1px solid #c5a36570;background:transparent;
-  color:var(--cream);padding:7px 11px;font-size:11px;cursor:pointer
+  background:transparent;color:var(--cream);
+  border:1px solid #b99a5c85;padding:6px 10px;
+  font-size:11px;cursor:pointer
 }
-.page-count{font:10px Arial,sans-serif;color:#d9ceb8;white-space:nowrap}
-
-#app{min-height:100vh;min-height:100svh}
+#app{min-height:100vh}
 .view{
-  display:none;min-height:calc(100vh - 48px);
-  min-height:calc(100svh - 48px);
-  padding:35px 18px 60px;
+  display:none;
+  min-height:calc(100vh - 48px);
+  padding:35px 17px 55px;
 }
-.view.active{display:block;animation:pageIn .45s ease both}
+.view.active{display:block;animation:fadeIn .45s ease both}
 .view.dark{
-  background:
-    radial-gradient(ellipse at 50% 0%,#28533d 0%,transparent 58%),
-    var(--green);
+  background:radial-gradient(ellipse at 50% 0%,#315541 0%,transparent 65%),var(--green);
   color:var(--cream)
 }
 .view.light{
   background:
-    radial-gradient(ellipse at 100% 0%,#e8ddc5 0%,transparent 40%),
+    radial-gradient(ellipse at 100% 0%,#ece3d0 0%,transparent 45%),
     var(--cream);
   color:var(--ink)
 }
-.container{width:min(100%,720px);margin:0 auto}
+.container{width:min(100%,700px);margin:0 auto}
 .center{text-align:center}
 .eyebrow{
   color:var(--gold);font:10px Arial,sans-serif;
   letter-spacing:3px;text-transform:uppercase;text-align:center
 }
 h1,h2,h3{font-weight:normal;line-height:1.35}
-h1{font-size:clamp(42px,11vw,76px);margin:17px 0}
-h2{font-size:clamp(30px,7vw,46px);margin:12px 0;color:var(--green)}
-h3{font-size:24px;color:var(--green);margin:12px 0}
+h1{font-size:clamp(43px,11vw,76px);margin:19px 0}
+h2{font-size:clamp(29px,7vw,43px);margin:14px 0;color:var(--green)}
+h3{font-size:23px;color:var(--green);margin:12px 0}
 .dark h2,.dark h3{color:var(--cream)}
-.subtitle{
-  color:var(--muted);font-size:14px;text-align:center
-}
-.dark .subtitle{color:#ded7c5}
-.ornament{color:var(--gold);font-size:24px;text-align:center;margin:17px 0}
+.subtitle{text-align:center;color:var(--muted);font-size:13px}
+.dark .subtitle{color:#ded6c3}
+.ornament{text-align:center;color:var(--gold);font-size:22px;margin:17px 0}
 .rule{
-  height:1px;width:100%;margin:22px 0;
+  height:1px;margin:23px auto;
   background:linear-gradient(90deg,transparent,var(--gold),transparent)
 }
 .paper{
-  position:relative;padding:clamp(23px,5vw,43px);
+  position:relative;padding:clamp(22px,5vw,39px);
+  background:linear-gradient(135deg,#ffffff85,transparent 50%),var(--paper);
   border:1px solid #d8c69f;
-  background:
-    linear-gradient(135deg,#ffffffa0,transparent 45%),
-    var(--paper);
-  box-shadow:0 15px 45px #102b2210
+  box-shadow:0 12px 35px #173b2d0b
 }
 .paper:before{
   content:"";position:absolute;inset:5px;
-  border:1px solid #c5a36525;pointer-events:none
+  border:1px solid #b99a5c20;pointer-events:none
 }
 .letter-text{
   white-space:pre-line;font-size:15px;line-height:2;
   overflow-wrap:anywhere
 }
 .signature{
-  margin-top:26px;padding-top:17px;border-top:1px solid var(--line);
-  color:#947746;text-align:center;font-style:italic
+  margin-top:25px;padding-top:16px;
+  border-top:1px solid var(--line);
+  text-align:center;color:#927746;font-style:italic
 }
 .primary,.secondary{
-  display:inline-flex;justify-content:center;align-items:center;
-  gap:8px;min-height:46px;padding:10px 18px;
-  border:1px solid var(--gold);cursor:pointer;
-  font-size:12px;text-decoration:none;transition:.25s
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:44px;padding:10px 16px;
+  border:1px solid var(--gold);font-size:12px;cursor:pointer;
+  transition:background .2s,transform .2s,color .2s;
+  text-decoration:none
 }
-.primary{background:var(--gold);color:var(--deep)}
-.primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.primary{background:var(--green);color:var(--cream);border-color:var(--green)}
+.primary:hover{background:var(--green-light);transform:translateY(-2px)}
 .secondary{background:transparent;color:var(--green)}
-.dark .secondary{color:var(--cream)}
-.secondary:hover{background:#c5a36516}
-.button-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}
+.secondary:hover{background:#b99a5c12}
+.button-row{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:10px;margin-top:25px
+}
 
-/* ОБЛОЖКА */
-
+/* Обложка */
 .cover{
-  min-height:calc(100svh - 48px);display:flex;
-  align-items:center;justify-content:center;text-align:center
+  min-height:calc(100vh - 48px);
+  display:flex;align-items:center;justify-content:center;text-align:center
 }
 .book-emblem{
-  width:82px;height:82px;margin:0 auto 20px;
-  display:grid;place-items:center;border:1px solid var(--gold);
-  border-radius:50%;color:var(--gold2);font-size:39px;
-  box-shadow:0 0 0 7px #c5a36512,0 0 0 14px #c5a36508
+  display:grid;place-items:center;width:76px;height:76px;
+  border:1px solid var(--gold);border-radius:50%;
+  color:var(--gold-light);font-size:37px;margin:0 auto 24px;
+  box-shadow:0 0 0 8px #b99a5c10
 }
-.cover-subtitle{max-width:340px;margin:0 auto;color:#e0d6c1;font-size:14px}
+.cover-subtitle{max-width:330px;margin:0 auto;color:#e2d9c8;font-size:14px}
 .cover-cta{margin-top:27px}
-.cover-note{font-size:11px;color:var(--gold2);font-style:italic;margin-top:14px}
+.cover-note{color:var(--gold-light);font-size:11px;margin-top:14px;font-style:italic}
 
-/* ОГЛАВЛЕНИЕ ДНЕВНИКА */
-
-.contents-title{text-align:center;margin-bottom:27px}
+/* Оглавление */
+.contents-title{text-align:center;margin-bottom:28px}
 .contents-list{display:flex;flex-direction:column;gap:12px}
 .chapter{
-  position:relative;display:grid;grid-template-columns:52px 1fr 25px;
-  align-items:center;gap:12px;width:100%;text-align:left;
-  padding:17px 14px;border:1px solid #c5a36565;
-  background:linear-gradient(120deg,#fffaf0,#f4ead5);
-  color:var(--ink);cursor:pointer;
-  box-shadow:0 5px 16px #102b2208;transition:transform .25s,box-shadow .25s
+  width:100%;display:grid;
+  grid-template-columns:48px 1fr 20px;gap:12px;align-items:center;
+  text-align:left;padding:16px 13px;
+  border:1px solid #b99a5c60;background:#fffdf7;color:var(--ink);
+  cursor:pointer;transition:transform .25s,box-shadow .25s
 }
-.chapter:hover{transform:translateX(4px);box-shadow:0 10px 25px #102b2212}
+.chapter:hover{transform:translateX(3px);box-shadow:0 8px 22px #173b2d0c}
 .chapter-number{
-  display:grid;place-items:center;width:48px;height:58px;
-  border:1px solid #c5a36580;color:#9b7a43;font-size:19px;
-  background:linear-gradient(145deg,#fffdf6,#f0e4ca)
+  display:grid;place-items:center;width:45px;height:53px;
+  border:1px solid #b99a5c80;color:#9a7a43;
+  font-size:18px;background:#fbf6e9
 }
 .chapter-copy{min-width:0}
-.chapter-title{display:block;color:var(--green);font-size:17px;line-height:1.4}
-.chapter-desc{display:block;color:var(--muted);font-size:12px;line-height:1.6;margin-top:4px}
-.chapter-arrow{color:#a4864d;font-size:23px;text-align:center}
-.contents-footer{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}
+.chapter-title{display:block;color:var(--green);font-size:16px;line-height:1.45}
+.chapter-desc{display:block;color:var(--muted);font-size:11px;line-height:1.6;margin-top:4px}
+.chapter-arrow{font-size:23px;color:var(--gold);text-align:center}
 
-/* ОТДЕЛЬНЫЕ КОНВЕРТЫ */
+.distance-note{text-align:center;margin:35px auto 5px;padding:12px 0}
+.distance-note p{
+  color:var(--green);font-size:15px;line-height:1.9;
+  font-style:italic;letter-spacing:.2px;margin:13px 0
+}
+.distance-note p span{
+  color:var(--gold);font-size:23px;display:inline-block;
+  margin-left:4px;animation:heartPulse 2s ease-in-out infinite
+}
+.distance-line{
+  width:75px;height:1px;margin:0 auto;
+  background:linear-gradient(to right,transparent,var(--gold),transparent)
+}
 
+/* Конверты */
 .envelope-grid{
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:17px;margin-top:25px
+  gap:14px;margin-top:26px
 }
 .envelope-card{
-  position:relative;display:flex;flex-direction:column;align-items:center;
-  gap:12px;padding:14px 10px 16px;min-width:0;
-  border:1px solid #c5a36565;background:#fffaf0;
-  cursor:pointer;color:var(--green);text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:11px;
+  min-width:0;padding:14px 9px 16px;
+  border:1px solid #b99a5c60;background:var(--paper);
+  color:var(--green);text-align:center;cursor:pointer;
   transition:transform .25s,box-shadow .25s
 }
-.envelope-card:hover{transform:translateY(-4px);box-shadow:0 12px 24px #102b2215}
+.envelope-card:hover{transform:translateY(-4px);box-shadow:0 10px 25px #173b2d12}
 .envelope-visual{
-  position:relative;width:100%;max-width:210px;
-  height:112px;background:linear-gradient(145deg,#e4d0a0,#b9975e);
-  border:1px solid #b6975c;box-shadow:0 6px 12px #102b2210;
-  perspective:600px
+  position:relative;width:100%;max-width:210px;height:105px;
+  background:#d9c08d;border:1px solid #b99a5c;overflow:hidden;
+  box-shadow:0 5px 12px #173b2d0b
 }
-.envelope-visual .env-paper{
-  position:absolute;left:12%;right:12%;top:9%;height:76%;
-  background:#fffaf0;border:1px solid #e2d4b7;
-  display:flex;align-items:center;justify-content:center;
-  color:#8f7443;font-size:22px
+.env-paper{
+  position:absolute;left:12%;right:12%;top:8%;height:77%;
+  display:grid;place-items:center;background:#fffdf7;
+  color:#9a7a43;font-size:23px;border:1px solid #e6dcc7
 }
-.envelope-visual .env-left,
-.envelope-visual .env-right,
-.envelope-visual .env-bottom,
-.envelope-visual .env-flap{position:absolute;inset:0}
-.env-left{background:#d9c08d;clip-path:polygon(0 0,52% 55%,0 100%)}
-.env-right{background:#c4a36b;clip-path:polygon(100% 0,48% 55%,100% 100%)}
-.env-bottom{background:#e1cc9d;clip-path:polygon(0 100%,50% 42%,100% 100%)}
+.env-left,.env-right,.env-bottom,.env-flap{position:absolute;inset:0}
+.env-left{background:#ddc998;clip-path:polygon(0 0,52% 55%,0 100%)}
+.env-right{background:#c8ad76;clip-path:polygon(100% 0,48% 55%,100% 100%)}
+.env-bottom{background:#e4d1a5;clip-path:polygon(0 100%,50% 42%,100% 100%)}
 .env-flap{
-  background:linear-gradient(145deg,#e8d5a6,#c2a068);
-  clip-path:polygon(0 0,100% 0,50% 65%);
-  transform-origin:top;transition:transform .55s
+  background:linear-gradient(145deg,#ead9ac,#c2a068);
+  clip-path:polygon(0 0,100% 0,50% 66%);
+  transform-origin:top;transition:transform .5s
 }
-.envelope-card:hover .env-flap{transform:rotateX(24deg)}
+.envelope-card:hover .env-flap{transform:rotateX(25deg)}
 .env-seal{
-  position:absolute;z-index:2;top:54%;left:50%;
-  transform:translate(-50%,-50%);display:grid;place-items:center;
-  width:35px;height:35px;border-radius:50%;border:1px solid var(--gold2);
-  background:var(--green);color:var(--gold2);font-size:20px
+  position:absolute;z-index:2;left:50%;top:55%;
+  transform:translate(-50%,-50%);
+  display:grid;place-items:center;width:32px;height:32px;
+  border-radius:50%;background:var(--green);
+  border:1px solid var(--gold-light);color:var(--gold-light);font-size:16px
 }
-.env-title{font-size:15px;line-height:1.4}
-.env-hint{font-size:10px;color:#9b8050;letter-spacing:.6px}
+.env-title{font-size:14px;line-height:1.45}
+.env-hint{font:9px Arial,sans-serif;color:#987947;letter-spacing:.6px}
 
-/* ПИСЬМО */
-
-.letter-top{margin-bottom:24px}
-.letter-number{color:#9b8050;font-size:12px;text-align:center;letter-spacing:1px}
+/* Письма */
+.letter-number{text-align:center;color:#9a7a43;font-size:11px;letter-spacing:1.5px}
 .letter-heading{text-align:center}
 .letter-card{margin-top:24px}
-.letter-controls{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:10px;margin-top:22px
-}
+.letter-controls{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
 .letter-controls button{flex:1}
 
-/* СПИСОК ПРИЧИН */
-
-.reasons{list-style:none;padding:0;margin:25px 0 0;counter-reset:reason}
+/* Причины */
+.reasons{list-style:none;padding:0;margin:23px 0 0;counter-reset:reason}
 .reasons li{
-  display:grid;grid-template-columns:37px 1fr;gap:10px;
-  padding:12px 0;border-bottom:1px solid var(--line);
-  counter-increment:reason;font-size:15px
+  display:grid;grid-template-columns:34px 1fr;gap:10px;
+  padding:11px 0;border-bottom:1px solid var(--line);
+  counter-increment:reason;font-size:14px;line-height:1.75
 }
 .reasons li:before{
   content:counter(reason,decimal-leading-zero);
-  color:#9b7a43;font:11px Arial,sans-serif;padding-top:6px
+  color:#9b7b43;font:11px Arial,sans-serif;padding-top:5px
 }
 
-/* ФИНАЛ */
-
-.memory-photo{
-  margin-top:28px;padding-top:23px;border-top:1px solid var(--line);
-  text-align:center
-}
-.photo-frame{
-  width:100%;max-width:440px;margin:22px auto;padding:7px;
-  border:1px solid var(--gold);background:var(--paper);
-  box-shadow:0 14px 35px #102b2218
-}
-.photo-frame img{display:block;width:100%;max-height:650px;object-fit:contain}
-.photo-caption{font-style:italic;color:#947746!important}
-.photo-placeholder{padding:35px 12px;color:var(--muted);font-size:13px}
-.final-panel{
-  margin-top:25px;padding:28px 22px;text-align:center;
-  border:1px solid var(--gold);background:var(--paper)
-}
-.final-heart{color:var(--gold);font-size:39px;animation:heartbeat 2.3s infinite}
-footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
-
-/* ПЕРЕХОДЫ */
-
-@keyframes pageIn{
-  from{opacity:0;transform:translateY(9px)}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(8px)}
   to{opacity:1;transform:translateY(0)}
 }
-@keyframes heartbeat{
+@keyframes heartPulse{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.1)}
+  50%{transform:scale(1.13)}
 }
 @media(max-width:430px){
-  .view{padding:26px 14px 45px}
-  .paper{padding:24px 19px}
-  .letter-text{font-size:14px}
-  .chapter{grid-template-columns:43px 1fr 18px;gap:9px;padding:14px 10px}
-  .chapter-number{width:41px;height:52px;font-size:17px}
-  .chapter-title{font-size:15px}
-  .chapter-desc{font-size:11px}
+  .view{padding:25px 13px 42px}
+  .paper{padding:23px 18px}
+  .letter-text{font-size:14px;line-height:1.95}
+  .chapter{grid-template-columns:41px 1fr 17px;gap:9px;padding:13px 9px}
+  .chapter-number{width:39px;height:48px;font-size:16px}
+  .chapter-title{font-size:14px}
+  .chapter-desc{font-size:10px}
   .envelope-grid{gap:10px}
-  .envelope-visual{height:94px}
-  .env-title{font-size:13px}
-  .letter-controls button{padding:9px 7px;font-size:11px}
+  .envelope-visual{height:90px}
+  .env-title{font-size:12px}
+  .letter-controls button{padding:9px 6px;font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.01ms!important
-  }
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
@@ -316,16 +282,16 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
 
 <!-- ОБЛОЖКА -->
 <section class="view dark active" id="cover">
-  <div class="container cover center">
+  <div class="container cover">
     <div>
       <div class="book-emblem">♡</div>
-      <div class="eyebrow">A little gift from my heart</div>
+      <div class="eyebrow">A letter from my heart</div>
       <h1>Для моего<br>Даника</h1>
       <div class="rule"></div>
       <p class="cover-subtitle">
         Маленькая история о любви, вере и благодарности Богу за тебя.
       </p>
-      <button class="primary cover-cta" type="button" data-open="contents">
+      <button class="primary cover-cta" data-open="contents" type="button">
         Открыть дневник ♡
       </button>
       <div class="cover-note">Листай не спеша. Здесь всё от сердца.</div>
@@ -340,11 +306,11 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
       <div class="eyebrow">Наш маленький мир</div>
       <h2>Содержание</h2>
       <p class="subtitle">Выбери страницу, которую хочешь открыть.</p>
-      <div class="ornament">✧ ❦ ✧</div>
+      <div class="ornament">✧</div>
     </div>
 
     <div class="contents-list">
-      <button class="chapter" type="button" data-open="personal">
+      <button class="chapter" data-open="personal" type="button">
         <span class="chapter-number">I</span>
         <span class="chapter-copy">
           <span class="chapter-title">Письмо от сердца</span>
@@ -353,7 +319,7 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
         <span class="chapter-arrow">›</span>
       </button>
 
-      <button class="chapter" type="button" data-open="reasons">
+      <button class="chapter" data-open="reasons" type="button">
         <span class="chapter-number">II</span>
         <span class="chapter-copy">
           <span class="chapter-title">25 причин благодарности</span>
@@ -362,7 +328,7 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
         <span class="chapter-arrow">›</span>
       </button>
 
-      <button class="chapter" type="button" data-open="letters">
+      <button class="chapter" data-open="letters" type="button">
         <span class="chapter-number">III</span>
         <span class="chapter-copy">
           <span class="chapter-title">Открой, когда…</span>
@@ -370,18 +336,13 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
         </span>
         <span class="chapter-arrow">›</span>
       </button>
-
-      <button class="chapter" type="button" data-open="final">
-        <span class="chapter-number">IV</span>
-        <span class="chapter-copy">
-          <span class="chapter-title">Последняя страница</span>
-          <span class="chapter-desc">Финальное послание и фотография</span>
-        </span>
-        <span class="chapter-arrow">›</span>
-      </button>
     </div>
 
-    <p class="contents-footer">«Всегда благодарите за всё Бога» 🤍</p>
+    <div class="distance-note">
+      <div class="distance-line"></div>
+      <p>Даже на расстоянии<br>я рядом с тобой <span>♡</span></p>
+      <div class="distance-line"></div>
+    </div>
   </div>
 </section>
 
@@ -403,7 +364,7 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
     </article>
 
     <div class="button-row">
-      <button class="secondary" data-open="contents">← К оглавлению</button>
+      <button class="secondary" data-open="contents">← Оглавление</button>
       <button class="primary" data-open="reasons">Следующая страница →</button>
     </div>
   </div>
@@ -447,21 +408,21 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
     </article>
 
     <div class="button-row">
-      <button class="secondary" data-open="contents">← К оглавлению</button>
+      <button class="secondary" data-open="contents">← Оглавление</button>
       <button class="primary" data-open="letters">Открыть письма ♡</button>
     </div>
   </div>
 </section>
 
-<!-- ОГЛАВЛЕНИЕ ШЕСТИ КОНВЕРТОВ -->
+<!-- ШЕСТЬ КОНВЕРТОВ -->
 <section class="view light" id="letters">
   <div class="container">
     <div class="eyebrow">Страница третья</div>
     <h2 class="center">Открой, когда…</h2>
-    <p class="subtitle">Выбери конверт. Внутри — письмо именно для этого момента.</p>
+    <p class="subtitle">Выбери конверт. Внутри — письмо для этого момента.</p>
 
     <div class="envelope-grid">
-      <button class="envelope-card" data-letter="letter1" type="button">
+      <button class="envelope-card" data-open="letter1" type="button">
         <span class="envelope-visual">
           <span class="env-paper">♡</span><span class="env-left"></span>
           <span class="env-right"></span><span class="env-bottom"></span>
@@ -471,7 +432,7 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
         <span class="env-hint">ОТКРЫТЬ КОНВЕРТ ↗</span>
       </button>
 
-      <button class="envelope-card" data-letter="letter2" type="button">
+      <button class="envelope-card" data-open="letter2" type="button">
         <span class="envelope-visual">
           <span class="env-paper">♡</span><span class="env-left"></span>
           <span class="env-right"></span><span class="env-bottom"></span>
@@ -481,7 +442,7 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
         <span class="env-hint">ОТКРЫТЬ КОНВЕРТ ↗</span>
       </button>
 
-      <button class="envelope-card" data-letter="letter3" type="button">
+      <button class="envelope-card" data-open="letter3" type="button">
         <span class="envelope-visual">
           <span class="env-paper">♡</span><span class="env-left"></span>
           <span class="env-right"></span><span class="env-bottom"></span>
@@ -491,7 +452,7 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
         <span class="env-hint">ОТКРЫТЬ КОНВЕРТ ↗</span>
       </button>
 
-      <button class="envelope-card" data-letter="letter4" type="button">
+      <button class="envelope-card" data-open="letter4" type="button">
         <span class="envelope-visual">
           <span class="env-paper">✧</span><span class="env-left"></span>
           <span class="env-right"></span><span class="env-bottom"></span>
@@ -501,7 +462,7 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
         <span class="env-hint">ОТКРЫТЬ КОНВЕРТ ↗</span>
       </button>
 
-      <button class="envelope-card" data-letter="letter5" type="button">
+      <button class="envelope-card" data-open="letter5" type="button">
         <span class="envelope-visual">
           <span class="env-paper">♡</span><span class="env-left"></span>
           <span class="env-right"></span><span class="env-bottom"></span>
@@ -511,7 +472,7 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
         <span class="env-hint">ОТКРЫТЬ КОНВЕРТ ↗</span>
       </button>
 
-      <button class="envelope-card" data-letter="letter6" type="button">
+      <button class="envelope-card" data-open="letter6" type="button">
         <span class="envelope-visual">
           <span class="env-paper">♡</span><span class="env-left"></span>
           <span class="env-right"></span><span class="env-bottom"></span>
@@ -523,114 +484,101 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
     </div>
 
     <div class="button-row">
-      <button class="secondary" data-open="contents">← К оглавлению</button>
-      <button class="primary" data-open="final">Последняя страница →</button>
+      <button class="secondary" data-open="contents">← Оглавление</button>
     </div>
   </div>
 </section>
 
 <!-- ПИСЬМО 1 -->
-<section class="view light letter-view" id="letter1">
+<section class="view light" id="letter1">
   <div class="container">
-    <div class="letter-top">
-      <div class="letter-number">КОНВЕРТ № 01</div>
-      <h2 class="letter-heading">Когда скучаешь по мне 🥹</h2>
-    </div>
+    <div class="letter-number">КОНВЕРТ № 01</div>
+    <h2 class="letter-heading">Когда скучаешь по мне 🥹</h2>
     <article class="paper letter-card">
       <div class="ornament">♡</div>
       <div class="letter-text">Данил, если ты открыл это письмо, значит сейчас ты очень скучаешь по мне🥰 Знай, что это взаимно, но очень скоро мы будем с тобой вместе🥰 Поэтому, помни, что я очень люблю тебя, жду нашего разговора и тоже скучаю❤️</div>
       <div class="signature">Я тоже очень скучаю 🤍</div>
     </article>
     <div class="letter-controls">
-      <button class="secondary" data-open="letters">← Все конверты</button>
-      <button class="primary" data-open="letter2">Следующее письмо →</button>
+      <button class="secondary" data-open="letters">← Конверты</button>
+      <button class="primary" data-open="letter2">Следующее →</button>
     </div>
   </div>
 </section>
 
 <!-- ПИСЬМО 2 -->
-<section class="view light letter-view" id="letter2">
+<section class="view light" id="letter2">
   <div class="container">
-    <div class="letter-top">
-      <div class="letter-number">КОНВЕРТ № 02</div>
-      <h2 class="letter-heading">Когда грустно</h2>
-    </div>
+    <div class="letter-number">КОНВЕРТ № 02</div>
+    <h2 class="letter-heading">Когда грустно</h2>
     <article class="paper letter-card">
       <div class="ornament">♡</div>
       <div class="letter-text">Данил, тебе не нужно всегда быть сильным. Можно и нужно быть всегда собой. Но помни, что когда грустно тебе, то грустно и мне, поэтому, я бы очень не хотела, чтобы ты расстраивался. Очень люблю тебя и верю, что все будет хорошо ❤️ Я молюсь о тебе🙏🏽🥰</div>
       <div class="signature">Ты не один 🤍</div>
     </article>
     <div class="letter-controls">
-      <button class="secondary" data-open="letters">← Все конверты</button>
-      <button class="primary" data-open="letter3">Следующее письмо →</button>
+      <button class="secondary" data-open="letters">← Конверты</button>
+      <button class="primary" data-open="letter3">Следующее →</button>
     </div>
   </div>
 </section>
 
 <!-- ПИСЬМО 3 -->
-<section class="view light letter-view" id="letter3">
+<section class="view light" id="letter3">
   <div class="container">
-    <div class="letter-top">
-      <div class="letter-number">КОНВЕРТ № 03</div>
-      <h2 class="letter-heading">Когда хочешь улыбнуться</h2>
-    </div>
+    <div class="letter-number">КОНВЕРТ № 03</div>
+    <h2 class="letter-heading">Когда хочешь улыбнуться</h2>
     <article class="paper letter-card">
       <div class="ornament">♡</div>
       <div class="letter-text">Срочное напоминание: одна прекрасная девушка очень сильно тебя любит. А еще она очень милая, когда серьезная, но при этом Даник хочет, чтобы она улыбалась😄☺️ Поэтому, она всегда не знает, что выбрать: быть милой, или просто улыбаться😅❤️</div>
       <div class="signature">Улыбнись для меня 🥰</div>
     </article>
     <div class="letter-controls">
-      <button class="secondary" data-open="letters">← Все конверты</button>
-      <button class="primary" data-open="letter4">Следующее письмо →</button>
+      <button class="secondary" data-open="letters">← Конверты</button>
+      <button class="primary" data-open="letter4">Следующее →</button>
     </div>
   </div>
 </section>
 
 <!-- ПИСЬМО 4 -->
-<section class="view light letter-view" id="letter4">
+<section class="view light" id="letter4">
   <div class="container">
-    <div class="letter-top">
-      <div class="letter-number">КОНВЕРТ № 04</div>
-      <h2 class="letter-heading">О чём я молюсь за тебя</h2>
-    </div>
+    <div class="letter-number">КОНВЕРТ № 04</div>
+    <h2 class="letter-heading">О чём я молюсь за тебя</h2>
     <article class="paper letter-card">
       <div class="ornament">✧</div>
       <div class="letter-text">Я всегда благодарю Бога за то, что он послал в мою жизнь тебя. Всегда я прошу, чтобы он дал мудрости тебе во всем, помог в решении всех вопросов, проблем, которые есть. Молюсь о твоём духовном состоянии. Молюсь, чтобы у тебя все было хорошо ❤️ Просто молюсь о тебе, потому что ты мне очень дорог🤍</div>
       <div class="signature">Ты в моих молитвах 🤍</div>
     </article>
     <div class="letter-controls">
-      <button class="secondary" data-open="letters">← Все конверты</button>
-      <button class="primary" data-open="letter5">Следующее письмо →</button>
+      <button class="secondary" data-open="letters">← Конверты</button>
+      <button class="primary" data-open="letter5">Следующее →</button>
     </div>
   </div>
 </section>
 
 <!-- ПИСЬМО 5 -->
-<section class="view light letter-view" id="letter5">
+<section class="view light" id="letter5">
   <div class="container">
-    <div class="letter-top">
-      <div class="letter-number">КОНВЕРТ № 05</div>
-      <h2 class="letter-heading">Когда тяжёлый день</h2>
-    </div>
+    <div class="letter-number">КОНВЕРТ № 05</div>
+    <h2 class="letter-heading">Когда тяжёлый день</h2>
     <article class="paper letter-card">
       <div class="ornament">♡</div>
       <div class="letter-text">Данил, в первую очередь хочу сказать, что я тебя люблю. Я верю в тебя, верю, что все будет хорошо. Я очень ценю все, что ты делаешь для нас, спасибо тебе за все🥰 Я молюсь о тебе 🤍</div>
       <div class="signature">Я верю в тебя ❤️</div>
     </article>
     <div class="letter-controls">
-      <button class="secondary" data-open="letters">← Все конверты</button>
-      <button class="primary" data-open="letter6">Следующее письмо →</button>
+      <button class="secondary" data-open="letters">← Конверты</button>
+      <button class="primary" data-open="letter6">Следующее →</button>
     </div>
   </div>
 </section>
 
-<!-- ПИСЬМО 6 -->
-<section class="view light letter-view" id="letter6">
+<!-- ПИСЬМО 6 — ПОСЛЕДНЯЯ СТРАНИЦА -->
+<section class="view light" id="letter6">
   <div class="container">
-    <div class="letter-top">
-      <div class="letter-number">КОНВЕРТ № 06</div>
-      <h2 class="letter-heading">В день нашей встречи</h2>
-    </div>
+    <div class="letter-number">КОНВЕРТ № 06 · ПОСЛЕДНЯЯ СТРАНИЦА</div>
+    <h2 class="letter-heading">В день нашей встречи</h2>
     <article class="paper letter-card">
       <div class="ornament">✧ ♡ ✧</div>
       <div class="letter-text">Данил, я пишу это письмо и не знаю, какой сегодня день, в какое время мы встретились и как это было🙈 Мне даже трудно это представить, но я думаю, что все прошло не так, как мы себе это представляли. Мне интересно, что ты ощутил, когда увидел меня, что подумал… И как это все было) Я искренне верю, что все хорошо, надеюсь, что так и есть. Спасибо за все, что ты сделал, чтобы быть сейчас здесь.
@@ -638,66 +586,10 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
 Я думаю, что время до свадьбы пройдет очень быстро, нам нужно правильно его использовать и правильно вести себя🤍 Я думаю, Бог даст мудрости и поможет нам во всем. Я тебя люблю❤️</div>
       <div class="signature">До нашей встречи 🤍</div>
     </article>
-    <div class="letter-controls">
-      <button class="secondary" data-open="letters">← Все конверты</button>
-      <button class="primary" data-open="final">Последняя страница →</button>
-    </div>
-  </div>
-</section>
-
-<!-- ФИНАЛЬНЫЙ ПОДАРОК -->
-<section class="view light" id="final">
-  <div class="container">
-    <div class="eyebrow">Последняя страница</div>
-    <h2 class="center">Мой подарок для тебя</h2>
-    <p class="subtitle">Даник, ещё несколько слов от моего сердца 🤍</p>
-
-    <article class="paper" style="margin-top:25px">
-      <div class="ornament">✧ ♡ ✧</div>
-      <div class="letter-text">Даник, я очень благодарна Богу за то, что наши пути пересеклись.
-
-Я молюсь о тебе, верю в тебя и хочу, чтобы ты всегда помнил, насколько ты дорог мне.
-
-Пусть Бог даёт тебе мудрости, хранит и направляет тебя во всём. Пускай у тебя будет всегда отличное настроение и хорошие размышления❤️
-
-Я люблю тебя. И это маленькое письмо — ещё одно напоминание об этом🤍</div>
-      <div class="signature">С любовью 🤍</div>
-
-      <div class="memory-photo">
-        <div class="ornament">✧ ♡ ✧</div>
-        <h3 class="center">Наш особенный момент</h3>
-        <p class="subtitle">Пусть у нас будет ещё много воспоминаний, за которые можно благодарить Бога.</p>
-
-        <div class="photo-frame">
-          <img id="giftPhoto" src="./danil-photo.jpg"
-               alt="Особенное фото для Данила">
-          <div id="photoPlaceholder" class="photo-placeholder" hidden>
-            ♡ Здесь будет ваша фотография.<br>
-            Добавь файл danil-photo.jpg в репозиторий рядом с index.html.
-          </div>
-        </div>
-        <p class="photo-caption">Спасибо Богу за тебя. Я люблю тебя 🤍</p>
-      </div>
-    </article>
-
-    <div class="final-panel">
-      <div class="final-heart">♡</div>
-      <h3 class="center">Спасибо Богу за тебя</h3>
-      <p>Я молюсь о тебе, верю в тебя и хочу, чтобы ты всегда помнил, насколько ты дорог мне.</p>
-      <p>Пусть Бог хранит тебя, укрепляет твою веру и направляет во всём.</p>
-      <p>Я люблю тебя, Даник. Всегда помни об этом. 🤍</p>
-      <div class="signature">С любовью и благодарностью Богу</div>
-    </div>
-
     <div class="button-row">
-      <button class="secondary" data-open="contents">Вернуться к оглавлению</button>
-      <button class="primary" data-open="cover">Закрыть дневник ♡</button>
+      <button class="secondary" data-open="letters">← Все конверты</button>
+      <button class="primary" data-open="contents">К оглавлению ♡</button>
     </div>
-
-    <footer>
-      <div class="ornament">✧ ❦ ✧</div>
-      Этот маленький мир создан для тебя.
-    </footer>
   </div>
 </section>
 
@@ -711,9 +603,6 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
   const progressFill = document.getElementById('progressFill');
   const contentsBtn = document.getElementById('contentsBtn');
 
-  let currentId = 'cover';
-  let historyStack = [];
-
   const ids = views.map(view => view.id);
   const titles = {
     cover:'Обложка',
@@ -726,69 +615,57 @@ footer{text-align:center;margin-top:28px;color:var(--muted);font-size:12px}
     letter3:'Письмо 3',
     letter4:'Письмо 4',
     letter5:'Письмо 5',
-    letter6:'Письмо 6',
-    final:'Финальный подарок'
+    letter6:'Письмо 6'
   };
 
-  function show(id, remember = true) {
+  let currentId = 'cover';
+
+  function show(id, updateHash = true) {
     const target = document.getElementById(id);
     if (!target || !target.classList.contains('view')) return;
 
-    if (id === currentId) return;
-
-    if (remember && currentId !== id) historyStack.push(currentId);
-
-    currentId = id;
-
     views.forEach(view => {
       const active = view.id === id;
-      view.classList.toggle('active', active);
+      view.classList.toggle('active',active);
       view.hidden = !active;
     });
 
+    currentId = id;
     topbar.hidden = id === 'cover';
 
     const index = ids.indexOf(id);
     pageCount.textContent = titles[id] || '';
     progressFill.style.width =
-      (Math.max(0, index) / (ids.length - 1) * 100) + '%';
+      Math.max(0,index)/(ids.length-1)*100 + '%';
 
-    history.replaceState(null, '', id === 'cover'
-      ? location.pathname
-      : '#' + id);
+    if(updateHash){
+      const hash = id === 'cover' ? '' : '#' + id;
+      history.pushState({id},'',location.pathname + location.search + hash);
+    }
 
-    window.scrollTo({top:0,behavior:'instant'});
+    window.scrollTo({top:0,behavior:'auto'});
   }
 
-  document.addEventListener('click', event => {
+  document.addEventListener('click',event => {
     const button = event.target.closest('[data-open]');
-    if (!button) return;
-    show(button.dataset.open);
+    if(button) show(button.dataset.open);
   });
 
-  contentsBtn.addEventListener('click', () => show('contents'));
+  contentsBtn.addEventListener('click',() => show('contents'));
 
-  document.getElementById('giftPhoto').addEventListener('error', () => {
-    document.getElementById('giftPhoto').hidden = true;
-    document.getElementById('photoPlaceholder').hidden = false;
-  });
-
-  // Открытие прямой ссылки на определённый раздел.
-  function loadHash() {
+  function restoreFromHash(){
     const id = location.hash.slice(1);
-    if (ids.includes(id)) show(id, false);
-    else show('cover', false);
+    if(ids.includes(id)) show(id,false);
+    else show('cover',false);
   }
 
-  window.addEventListener('popstate', loadHash);
+  window.addEventListener('popstate',restoreFromHash);
 
   views.forEach(view => {
     view.hidden = !view.classList.contains('active');
   });
 
-  const initial = location.hash.slice(1);
-  if (ids.includes(initial)) show(initial, false);
-  else show('cover', false);
+  restoreFromHash();
 })();
 </script>
 </body>
