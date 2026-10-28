@@ -711,6 +711,24 @@ h2 {
         </span>
         <span class="menu-arrow">›</span>
       </button>
+      
+<button class="menu-item" data-go="extra">
+  <span class="menu-number">04</span>
+  <span>
+    <span class="menu-title">Ещё для тебя</span>
+    <span class="menu-description">Пожелание на твои 25 лет ♡</span>
+  </span>
+  <span class="menu-arrow">›</span>
+</button>
+
+<button class="menu-item" data-go="ending">
+  <span class="menu-number">05</span>
+  <span>
+    <span class="menu-title">И последнее</span>
+    <span class="menu-description">От всего сердца ♡</span>
+  </span>
+  <span class="menu-arrow">›</span>
+</button>
     </nav>
 
     <div class="distance-note">
@@ -720,6 +738,7 @@ h2 {
     </div>
   </div>
 </section>
+  
 
 <!-- 3. ЛИЧНОЕ ПИСЬМО -->
 <section class="screen light" id="personal">
@@ -987,7 +1006,33 @@ h2 {
   </div>
 </section>
 
-<!-- 12. ТИХОЕ ЗАВЕРШЕНИЕ, БЕЗ ФОТО И ПОДАРКА -->
+
+<!-- 12. ЕЩЁ ДЛЯ ТЕБЯ -->
+<section class="screen light" id="extra">
+  <div class="container">
+    <div class="eyebrow">A little more for you</div>
+    <h2>Ещё для тебя</h2>
+    <div class="ornament">♡</div>
+
+    <article class="paper">
+      <div class="letter-text">Ты прожил 25 лет и это уже является какой-то частью твоего жизненного пути.
+
+В пожелание хочу оставить тебе этот стих: «И будет он как дерево, посаженное при потоках вод, которое приносит плод свой во время своё, и лист которого не вянет; и во всём, что он ни делает, успеет». Псалом 1:3.
+
+Пускай вся твоя жизнь будет направлена на то, чтобы приносить плод, угодный Богу, преуспевать в этом и совершенствоваться❤️
+
+Я верю, что у тебя все получится 🥰</div>
+
+      <div class="signature">С любовью, твоя Викуля 🤍</div>
+    </article>
+
+    <div class="button-row">
+      <button class="secondary" data-go="letter6">← К письму</button>
+      <button class="primary" data-go="ending">Дальше ♡</button>
+    </div>
+  </div>
+</section>
+  <!-- 12. ТИХОЕ ЗАВЕРШЕНИЕ, БЕЗ ФОТО И ПОДАРКА -->
 <section class="screen dark" id="ending">
   <div class="container">
     <div class="ending-heart">♡</div>
@@ -1007,6 +1052,34 @@ h2 {
     <div class="button-row">
       <button class="primary" data-go="home">Начать сначала ↺</button>
       <button class="secondary" data-go="menu">Все разделы</button>
+    </div>
+  </div>
+</section>
+  
+<!-- 13. И ПОСЛЕДНЕЕ -->
+<section class="screen dark" id="ending">
+  <div class="container" style="text-align: center;">
+    <div class="ending-heart">♡</div>
+    <div class="eyebrow">And one last thing</div>
+
+    <h2>и последнее</h2>
+
+    <div class="line"></div>
+
+    <p class="ending-text" style="
+      font-size: clamp(30px, 7vw, 46px);
+      color: var(--gold-light);
+    ">я тебя люблю</p>
+
+    <div class="ornament">♡</div>
+
+    <div class="button-row">
+      <button class="secondary" data-go="extra">
+        ← Назад
+      </button>
+      <button class="primary" data-go="home">
+        Начать сначала ↺
+      </button>
     </div>
   </div>
 </section>
@@ -1032,7 +1105,8 @@ h2 {
     letter4: 'Письмо 4 из 6',
     letter5: 'Письмо 5 из 6',
     letter6: 'Письмо 6 из 6',
-    ending: 'До скорого ♡'
+    extra: 'Ещё для тебя',
+    ending: 'И последнее ♡'
   };
 
   const ids = screens.map(screen => screen.id);
